@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config control-bind="127.0.0.1:8059" version="1.0">
+    <web-server site-url="{{ atl_tomcat_scheme | default('http') }}://{{ atl_proxy_name | default('') }}:{{ atl_proxy_port | default('') }}">
+        <http bind=":8060" proxy-host="{{ atl_proxy_name | default('') }}" proxy-port="{{ atl_proxy_port | default('') }}" proxy-scheme="{{ atl_tomcat_scheme | default('http') }}"/>
+    </web-server>
+    <security allow-anon="true" allow-cru-anon="true">
+        <built-in>
+            <signup enabled="true"/>
+        </built-in>
+        <admins><system-admins/></admins>
+        <avatar><disabled/></avatar>
+    </security>
+    <repository-defaults>
+        <linker/>
+        <allow/>
+        <tarball enabled="false" maxFileCount="0"/>
+        <security allow-anon="true"/>
+	<text-indexer enabled="true"/>
+	<watches enabled="true"/>
+	<commit-message-syntax syntax="plain"/>
+	<changeset-discussions enabled="true"/>
+	<show-checkout-url>true</show-checkout-url>
+    </repository-defaults>
+    <check-for-updates/>
+    <snippet/>
+</config>
